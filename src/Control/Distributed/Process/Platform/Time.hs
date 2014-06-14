@@ -147,7 +147,7 @@ hours = TimeInterval Hours
 {-# INLINE timeToMicros #-}
 timeToMicros :: TimeUnit -> Int -> Int
 timeToMicros Micros  us   = us
-timeToMicros Millis  ms   = ms  * (10 ^ (3 :: Int)) -- (1000µs == 1ms)
+timeToMicros Millis  ms   = ms  * (10 ^ (3 :: Int)) -- (1000ï¿½s == 1ms)
 timeToMicros Seconds secs = timeToMicros Millis  (secs * milliSecondsPerSecond)
 timeToMicros Minutes mins = timeToMicros Seconds (mins * secondsPerMinute)
 timeToMicros Hours   hrs  = timeToMicros Minutes (hrs  * minutesPerHour)
@@ -237,7 +237,7 @@ instance Num Delay where
   _           + Infinity   = Infinity
   (Delay t1 ) + (Delay t2) = Delay (t1 + t2)
 
-  NoDelay     - x          = x
+  NoDelay     - x          = NoDelay
   Infinity    - _          = Infinity
   x           - NoDelay    = x
   _           - Infinity   = Infinity
